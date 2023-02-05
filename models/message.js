@@ -9,4 +9,4 @@ const MessageSchema = new Schema({
     title: { type: String, reqired: true },
 })
 
-module.exports = mongoose.model("Message", MessageSchema)
+module.exports = mongoose.model("Message", MessageSchema, "users")
