@@ -4,12 +4,12 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel='stylesheet' href='/stylesheets/style.css'/>
-    <title>Profile</title>
+    <link rel="stylesheet" href="/public/style.css">
+    <title>New Post</title>
 </head>
 <body>
     <nav>
-        <h1>Members Only</h1>
+        <a href="/"><h1>Members Only</h1></a>
         <div>
           <a href="/register">Register</a>
           <a href="/login">Log In</a>
@@ -17,6 +17,12 @@
           <a href="/logout">Log Out</a>
         </div>
     </nav>
-    <h1>profile</h1>
+    <main>
+        <form action="" method="post">
+            <input placeholder="Title" type="text" name="title" id="title" required>
+            <input placeholder="Text" type="text" name="text" id="text" required>
+            <button type="submit">Submit post</button>
+        </form>
+    </main>
 </body>
 </html>

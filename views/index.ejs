@@ -21,11 +21,32 @@
     <main>
       <section>
         <h1>Hello World!</h1>
-        <% if (typeof(user) != "undefined") { %>
+        <% if (typeof(currentUser) != "undefined") { %>
           <div>
-            <h3>Hello, <%= user.name %> </h3>
+            <h3>Hello, <%= currentUser.name %></h3>
+            <button onclick="window.location='./new-post'">New Post</button>
           </div>
         <% } %>
+      </section>
+      <section>
+        <% if (typeof(currentUser) != "undefined" && currentUser.membership) { %>
+          <% for (let i = 0; i < posts.length; i++) {%>
+           <div>
+            <h4><%= posts[i].title %></h4>
+            <h5>By <%= usernames[i] %></h5>
+            <p><%= posts[i].text %></p>
+            <p><%= posts[i].date_formatted %></p>
+           </div>
+          <% } %>
+        <% } else { %>
+          <% for (let i = 0; i < posts.length; i++) {%>
+            <div>
+             <h4><%= posts[i].title %></h4>
+             <h5>By Anonymous</h5>
+             <p><%= posts[i].text %></p>
+            </div>
+           <% } %>
+        <% } %> 
       </section>
     </main>
   </body>

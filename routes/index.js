@@ -4,12 +4,19 @@ const { body, validationResult } = require("express-validator")
 const bcrypt = require("bcryptjs")
 const mongoose = require("mongoose")
 const UserModel = require("../models/user")
+const MessageModel = require("../models/message")
 const async = require("async")
 const passport = require("passport")
 
 // GET home page.
-router.get('/', (req, res, next) => {
-  res.render('index', { user: req.user, });
+router.get('/', async (req, res, next) => {
+  let usersArray = []
+  const posts = await MessageModel.find()
+  posts.forEach(async post => {
+    let user = await UserModel.findById(post.user)
+    usersArray.push(`${user.name} ${user.surname}`)
+  })
+  res.render('index', { posts: posts, usernames: usersArray });
 });
 
 // GET registration page
@@ -79,7 +86,6 @@ router.post('/register', [
 
 // GET login page
 router.get('/login', (req, res, next) => {
-  console.log(req.session.messages)
   res.render('login')
 })
 
@@ -102,5 +108,47 @@ router.get('/logout', (req, res, next) => {
     res.redirect('/')
   })
 })
+
+// GET new post page
+router.get('/new-post', (req, res, next) => {
+  res.render('new-post')
+})
+
+/// POST new post
+router.post('/new-post', [
+  body('title')
+    .trim()
+    .isLength({ min: 1, max: 20 })
+    .escape()
+    .withMessage("Title must be specified and be between 1 and 20 characters long."),
+  body("text")
+    .trim()
+    .isLength({ min: 5 })
+    .escape()
+    .withMessage("The post must be at least 5 characters long."),
+  (req, res, next) => {
+    const errors = validationResult(req);
+    if (!errors.isEmpty()) {
+      res.render("new-post", {
+        post: req.body,
+        errors: errors.array(),
+      });
+      return;
+    }
+    const post = new MessageModel({
+      title: req.body.title,
+      user: res.locals.currentUser._id,
+      date: new Date(),
+      text: req.body.text
+    })
+      
+    post.save(err => {
+      if (err) { 
+        return next(err);
+      }
+      res.redirect("/");
+    })
+  }
+])
 
 module.exports = router;
