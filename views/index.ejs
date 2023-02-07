@@ -12,10 +12,13 @@
     <nav>
       <a href="/"><h1>Members Only</h1></a>
       <div>
-        <a href="/register">Register</a>
-        <a href="/login">Log In</a>
-        <a href="/profile">Profile</a>
-        <a href="/logout">Log Out</a>
+        <% if (typeof(currentUser) == "undefined") { %>
+          <a href="/register">Register</a>
+          <a href="/login">Log In</a>
+        <% } else { %>
+          <a href="/profile">Profile</a>
+          <a href="/logout">Log Out</a>
+        <% } %> 
       </div>
     </nav>
     <main>
@@ -29,6 +32,7 @@
         <% } %>
       </section>
       <section>
+        <% console.log(usernames) %> 
         <% if (typeof(currentUser) != "undefined" && currentUser.membership) { %>
           <% for (let i = 0; i < posts.length; i++) {%>
            <div>

@@ -11,12 +11,28 @@
     <nav>
         <h1>Members Only</h1>
         <div>
-          <a href="/register">Register</a>
-          <a href="/login">Log In</a>
-          <a href="/profile">Profile</a>
-          <a href="/logout">Log Out</a>
+            <% if (typeof(currentUser) == "undefined") { %>
+                <a href="/register">Register</a>
+                <a href="/login">Log In</a>
+            <% } else { %>
+                <a href="/profile">Profile</a>
+                <a href="/logout">Log Out</a>
+            <% } %> 
         </div>
     </nav>
-    <h1>profile</h1>
+    <main>
+        <section>
+            <h1>Profile</h1>
+            <% if (!currentUser.membership) { %>
+            <h2>Become a Member:</h2> 
+            <form action="" method="post">
+                <label for="membership-code">Membership Code</label>
+                <input placeholder="Membership Code" type="text" name="membership_code" id="membership_code" required>
+            </form>
+            <% } else { %>
+                <p>You are a Member! Congratulations!</p>
+            <% } %> 
+        </section>
+    </main>
 </body>
 </html>

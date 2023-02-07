@@ -1,3 +1,4 @@
+require('dotenv').config()
 const express = require('express');
 const router = express.Router();
 const { body, validationResult } = require("express-validator")
@@ -12,10 +13,10 @@ const passport = require("passport")
 router.get('/', async (req, res, next) => {
   let usersArray = []
   const posts = await MessageModel.find()
-  posts.forEach(async post => {
+  for (const post of posts) {
     let user = await UserModel.findById(post.user)
     usersArray.push(`${user.name} ${user.surname}`)
-  })
+  }
   res.render('index', { posts: posts, usernames: usersArray });
 });
 
@@ -150,5 +151,17 @@ router.post('/new-post', [
     })
   }
 ])
+
+// GET Profile page
+router.get("/profile", (req, res, next) => {
+  res.render("profile")
+})
+
+router.post("/profile", async (req, res, next) => {
+  if(req.body.membership_code == process.env.MEMBERSHIP_CODE) {
+    await UserModel.findOneAndUpdate({ _id: res.locals.currentUser._id }, { membership: true } )
+    res.redirect("/profile")
+  }
+})
 
 module.exports = router;

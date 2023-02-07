@@ -10,4 +10,8 @@ const UserSchema = new Schema({
     membership: { type: Boolean, required: true }
 })
 
+UserSchema.virtual("full_name").get(function () {
+    return `${this.surname} ${this.name}`
+})
+
 module.exports = mongoose.model("User", UserSchema, "users")
