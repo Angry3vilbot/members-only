@@ -157,10 +157,27 @@ router.get("/profile", (req, res, next) => {
   res.render("profile")
 })
 
+// POST membership change
 router.post("/profile", async (req, res, next) => {
   if(req.body.membership_code == process.env.MEMBERSHIP_CODE) {
     await UserModel.findOneAndUpdate({ _id: res.locals.currentUser._id }, { membership: true } )
     res.redirect("/profile")
+  }
+})
+
+// POST admin status change
+router.post("/admin", async (req, res, next) => {
+  if (req.body.admin_code == process.env.ADMIN_CODE) {
+    await UserModel.findOneAndUpdate({ _id: res.locals.currentUser._id }, { isAdmin: true } )
+    res.redirect("/profile")
+  }
+})
+
+// POST deletion of a post
+router.post("/", async (req, res, next) => {
+  if(res.locals.currentUser.isAdmin) {
+    await MessageModel.findByIdAndDelete(req.body.post_id)
+    res.redirect("/")
   }
 })
 

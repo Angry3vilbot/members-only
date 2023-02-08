@@ -33,7 +33,20 @@
       </section>
       <section>
         <% console.log(usernames) %> 
-        <% if (typeof(currentUser) != "undefined" && currentUser.membership) { %>
+        <% if (typeof(currentUser) != "undefined" && currentUser.isAdmin) { %>
+          <% for (let i = 0; i < posts.length; i++) {%>
+            <div>
+             <h4><%= posts[i].title %></h4>
+             <h5>By <%= usernames[i] %></h5>
+             <p><%= posts[i].text %></p>
+             <p><%= posts[i].date_formatted %></p>
+             <form action="" method="post">
+              <input type="hidden" name="post_id" id="post_id" value="<%= posts[i]._id %>">
+              <button type="submit">Delete</button>
+             </form>
+            </div>
+           <% } %>
+        <% } else if (typeof(currentUser) != "undefined" && currentUser.membership) { %>
           <% for (let i = 0; i < posts.length; i++) {%>
            <div>
             <h4><%= posts[i].title %></h4>

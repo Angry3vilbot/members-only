@@ -9,7 +9,7 @@
 </head>
 <body>
     <nav>
-        <h1>Members Only</h1>
+        <a href="/"><h1>Members Only</h1></a>
         <div>
             <% if (typeof(currentUser) == "undefined") { %>
                 <a href="/register">Register</a>
@@ -32,6 +32,16 @@
             <% } else { %>
                 <p>You are a Member! Congratulations!</p>
             <% } %> 
+            <% if (!currentUser.isAdmin) { %>
+                <h2>Admin login:</h2> 
+                <form action="" method="post">
+                    <label for="admin_code">Admin Password</label>
+                    <input placeholder="Admin Password" type="text" name="admin_code" id="admin_code" required>
+                    <button type="submit" formaction="/admin">Submit</button>
+                </form>
+                <% } else { %>
+                    <p>You are an admin</p>
+                <% } %> 
         </section>
     </main>
 </body>
