@@ -12,7 +12,7 @@ const passport = require("passport")
 // GET home page.
 router.get('/', async (req, res, next) => {
   let usersArray = []
-  const posts = await MessageModel.find()
+  const posts = await MessageModel.find().sort({ date: 'desc' })
   for (const post of posts) {
     let user = await UserModel.findById(post.user)
     usersArray.push(`${user.name} ${user.surname}`)
@@ -120,12 +120,10 @@ router.post('/new-post', [
   body('title')
     .trim()
     .isLength({ min: 1, max: 20 })
-    .escape()
     .withMessage("Title must be specified and be between 1 and 20 characters long."),
   body("text")
     .trim()
     .isLength({ min: 5 })
-    .escape()
     .withMessage("The post must be at least 5 characters long."),
   (req, res, next) => {
     const errors = validationResult(req);

@@ -1,8 +1,43 @@
 body {
   padding: 50px;
-  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+  font: 16px "Lucida Grande", Helvetica, Arial, sans-serif;
 }
 
 a {
-  color: #00B7FF;
+  color: white;
+  text-decoration: none;
+  display: inline-block;
+  position: relative;
+}
+
+a::after {
+  content: '';
+  position: absolute;
+  width: 100%;
+  transform: scaleX(0);
+  height: 2px;
+  bottom: 0;
+  left: 0;
+  background-color: white;
+  transform-origin: bottom right;
+  transition: transform 0.25s ease-out;
+}
+
+a:hover::after {
+  transform: scaleX(1);
+  transform-origin: bottom left;
+}
+
+nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #2F97C1;
+  padding-left: 1rem;
+  padding-right: 1rem;
+}
+
+nav div {
+  display: flex;
+  gap: 2rem;
 }

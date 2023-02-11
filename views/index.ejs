@@ -10,7 +10,7 @@
   </head>
   <body>
     <nav>
-      <a href="/"><h1>Members Only</h1></a>
+      <h1><a href="/">Members Only</a></h1>
       <div>
         <% if (typeof(currentUser) == "undefined") { %>
           <a href="/register">Register</a>
@@ -22,8 +22,8 @@
       </div>
     </nav>
     <main>
-      <section>
-        <h1>Hello World!</h1>
+      <section class="hero">
+        <h1>Welcome to Members Only</h1>
         <% if (typeof(currentUser) != "undefined") { %>
           <div>
             <h3>Hello, <%= currentUser.name %></h3>
@@ -31,8 +31,7 @@
           </div>
         <% } %>
       </section>
-      <section>
-        <% console.log(usernames) %> 
+      <section class="posts">
         <% if (typeof(currentUser) != "undefined" && currentUser.isAdmin) { %>
           <% for (let i = 0; i < posts.length; i++) {%>
             <div>
