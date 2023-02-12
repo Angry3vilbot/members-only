@@ -7,6 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel='stylesheet' href='/stylesheets/style.css'/>
     <link rel="stylesheet" href="/stylesheets/index.css">
+    <script src="/javascripts/navbarScript.js" defer></script>
   </head>
   <body>
     <nav>
@@ -41,7 +42,7 @@
              <p><%= posts[i].date_formatted %></p>
              <form action="" method="post">
               <input type="hidden" name="post_id" id="post_id" value="<%= posts[i]._id %>">
-              <button type="submit">Delete</button>
+              <button type="submit" class="delete-post-btn">Delete</button>
              </form>
             </div>
            <% } %>

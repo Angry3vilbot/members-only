@@ -5,22 +5,49 @@
 
 .hero h1 {
     text-align: center;
+    color: white;
 }
 
 .hero div {
+    position: fixed;
+    top: 20%;
     align-self: flex-end;
+    color: white;
+    background-color: #84CC16;
+    border-radius: 1rem;
+    margin-right: 1rem;
+    width: 10rem;
+    text-align: center;
+}
+
+.hero div button {
+    margin-bottom: 0.5rem;
+    background-color: #06B6D4;
+    border: none;
+    color: white;
+    border-radius: 1rem;
+    width: 7rem;
+    height: 2rem;
+}
+
+.hero div button:hover {
+    cursor: pointer;
+    background-color: #0897b0;
+}
+
+.hero div button:active {
+    background-color: #0a798d;
 }
 
 .posts {
     display: flex;
     flex-direction: column;
-    background-color: #2F97C1;
     gap: 1rem;
 }
 
 .posts div {
     align-self: center;
-    background-color: #4f518c;
+    background-color: #84CC16;
     color: white;
     border-radius: 2rem;
     width: 50%;
@@ -34,4 +61,23 @@
     margin-left: 1rem;
     margin-right: 1rem;
     word-wrap: normal;
+}
+
+.posts div form {
+    display: flex;
+    justify-content: flex-end;
+}
+
+.delete-post-btn {
+    border: none;
+    background-color: red;
+    color: white;
+    border-bottom-right-radius: 2rem;
+    width: 5rem;
+    height: 2.5rem;
+}
+
+.delete-post-btn:hover {
+    background-color: rgb(221, 13, 13);
+    cursor: pointer;
 }

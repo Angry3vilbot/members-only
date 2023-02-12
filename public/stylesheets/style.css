@@ -1,6 +1,10 @@
 body {
-  padding: 50px;
+  padding: 0;
+  margin: 0;
   font: 16px "Lucida Grande", Helvetica, Arial, sans-serif;
+  background-color: #4D7C0F;
+  display: flex;
+  flex-direction: column;
 }
 
 a {
@@ -29,15 +33,25 @@ a:hover::after {
 }
 
 nav {
+  position: sticky;
+  top: 0;
+  width: 80%;
+  align-self: center;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  background-color: #2F97C1;
+  background-color: #84CC16;
   padding-left: 1rem;
   padding-right: 1rem;
+  transition: all 0.5s cubic-bezier(0.215, 0.610, 0.355, 1);
 }
 
 nav div {
   display: flex;
   gap: 2rem;
+}
+
+nav.stretch {
+  width: 100vw;
+  box-sizing: border-box;
 }
