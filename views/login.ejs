@@ -5,11 +5,12 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel='stylesheet' href='/stylesheets/style.css'/>
+    <link rel="stylesheet" href="/stylesheets/form.css">
     <title>Login</title>
 </head>
 <body>
     <nav>
-        <a href="/"><h1>Members Only</h1></a>
+        <h1><a href="/">Members Only</a></h1>
         <div>
             <% if (typeof(currentUser) == "undefined") { %>
                 <a href="/register">Register</a>
@@ -20,10 +21,12 @@
             <% } %> 
         </div>
     </nav>
-    <form action="" method="post">
-        <input placeholder="Email Address" type="email" name="email" id="email" required>
-        <input placeholder="Password" type="password" name="password" id="password" required>
-        <button type="submit">Log In</button>
-    </form>
+    <main>
+        <form action="" method="post">
+            <input placeholder="Email Address" type="email" name="email" id="email" required>
+            <input placeholder="Password" type="password" name="password" id="password" required>
+            <button type="submit">Log In</button>
+        </form>
+    </main>
 </body>
 </html>

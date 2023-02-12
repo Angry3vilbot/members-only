@@ -1,0 +1,29 @@
+main {
+    display: flex;
+    flex-direction: column;
+}
+
+form {
+    align-self: center;
+    margin-top: 2rem;
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+}
+
+form input {
+    width: 15rem;
+    height: 1.5rem;
+}
+
+form button[type="submit"] {
+    background-color: #99ff00;
+    border: none;
+    border-radius: 0.5rem;
+    height: 2rem;
+}
+
+form button[type="submit"]:hover {
+    background-color: #86d70c;
+    cursor: pointer;
+}
