@@ -5,6 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel='stylesheet' href='/stylesheets/style.css'/>
+    <link rel="stylesheet" href="/stylesheets/profile.css">
     <title>Profile</title>
 </head>
 <body>
@@ -21,28 +22,35 @@
         </div>
     </nav>
     <main>
-        <section>
-            <h1>Profile</h1>
-            <% if (!currentUser.membership) { %>
-            <h2>Become a Member:</h2> 
-            <form action="" method="post">
-                <label for="membership-code">Membership Code</label>
-                <input placeholder="Membership Code" type="text" name="membership_code" id="membership_code" required>
-            </form>
-            <% } else { %>
-                <p>You are a Member! Congratulations!</p>
-            <% } %> 
-            <% if (!currentUser.isAdmin) { %>
-                <h2>Admin login:</h2> 
-                <form action="" method="post">
-                    <label for="admin_code">Admin Password</label>
-                    <input placeholder="Admin Password" type="text" name="admin_code" id="admin_code" required>
-                    <button type="submit" formaction="/admin">Submit</button>
-                </form>
+        <h1>Profile</h1>
+        <div class="status-columns">
+            <section class="membership">
+                <h2>Membership Status</h2>
+                <% if (!currentUser.membership) { %>
+                    <h3>Become a Member:</h3> 
+                    <form action="" method="post">
+                        <label for="membership-code">Membership Code</label>
+                        <input placeholder="Membership Code" type="text" name="membership_code" id="membership_code" required>
+                        <button type="submit">Submit</button>
+                    </form>
                 <% } else { %>
-                    <p>You are an admin</p>
+                    <p>You are a Member! Congratulations!</p>
                 <% } %> 
-        </section>
+            </section>
+            <section class="admin">
+                <h2>Admin Status</h2>
+                <% if (!currentUser.isAdmin) { %>
+                    <h3>Admin login:</h3> 
+                    <form action="" method="post">
+                        <label for="admin_code">Admin Password</label>
+                        <input placeholder="Admin Password" type="text" name="admin_code" id="admin_code" required>
+                        <button type="submit" formaction="/admin">Submit</button>
+                    </form>
+                <% } else { %>
+                    <p>You are an admin.</p>
+                <% } %>
+            </section>
+        </div>
     </main>
 </body>
 </html>

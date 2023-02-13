@@ -16,6 +16,10 @@ form input {
     height: 1.5rem;
 }
 
+form textarea {
+    resize: none;
+}
+
 form button[type="submit"] {
     background-color: #99ff00;
     border: none;

@@ -28,7 +28,11 @@
         <% if (typeof(currentUser) != "undefined") { %>
           <div>
             <h3>Hello, <%= currentUser.name %></h3>
-            <button onclick="window.location='./new-post'">New Post</button>
+            <% if (currentUser.membership) { %>
+              <button onclick="window.location='./new-post'">New Post</button>
+            <% } else { %>
+              <p>You are not a member.</p>
+            <% } %>
           </div>
         <% } %>
       </section>

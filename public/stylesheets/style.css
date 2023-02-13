@@ -59,3 +59,8 @@ nav.stretch {
 input[type="email"], input[type="password"] {
   border: none;
 }
+
+textarea {
+  font-family: inherit;
+  font-size: inherit;
+} 

@@ -8,7 +8,7 @@ const UserSchema = new Schema({
     password: { type: String, reqired: true },
     email: { type: String, reqired: true },
     membership: { type: Boolean, required: true },
-    isAdmin: { type: Boolean, required: true }
+    isAdmin: { type: Boolean, required: false }
 })
 
 UserSchema.virtual("full_name").get(function () {
