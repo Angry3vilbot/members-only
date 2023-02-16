@@ -28,5 +28,8 @@
             <button type="submit">Log In</button>
         </form>
     </main>
+    <% if (typeof(errors) != "undefined") { %>
+        <p><%= errors[0]%></p>
+        <% console.log(errors) %>
 </body>
 </html>
