@@ -22,6 +22,7 @@
         </div>
     </nav>
     <main>
+        <% typeof(error) != "undefined" ? console.log(error) : console.log("no errors") %>
         <h1>Profile</h1>
         <div class="status-columns">
             <section class="membership">
@@ -33,6 +34,9 @@
                         <input placeholder="Membership Code" type="text" name="membership_code" id="membership_code" required>
                         <button type="submit">Submit</button>
                     </form>
+                    <% if (typeof(error) != "undefined" && error === "membership") { %>
+                        <p class="error-msg"><span>Incorrect membership code!</span> Hint: the code is NGGYUNGLYDNGRAADU</p>
+                    <% } %>
                 <% } else { %>
                     <p>You are a Member! Congratulations!</p>
                 <% } %> 
@@ -46,6 +50,9 @@
                         <input placeholder="Admin Password" type="text" name="admin_code" id="admin_code" required>
                         <button type="submit" formaction="/admin">Submit</button>
                     </form>
+                    <% if (typeof(error) != "undefined" && error === "admin") { %>
+                        <p class="error-msg"><span>Incorrect admin code!</span> Hint: the code is GiveMeAdmin</p>
+                    <% } %>
                 <% } else { %>
                     <p>You are an admin.</p>
                 <% } %>
