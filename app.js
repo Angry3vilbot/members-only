@@ -12,7 +12,7 @@ const bcrypt = require('bcryptjs')
 const UserModel = require('./models/user')
 const indexRouter = require('./routes/index');
 
-const mongoDb = process.env.DB_LINK;
+const mongoDb = process.env.DB_LINK || "mongodb+srv://admin:admin@cluster0.efsaqkz.mongodb.net/database?retryWrites=true&w=majority";
 mongoose.connect(mongoDb, { useUnifiedTopology: true, useNewUrlParser: true });
 const db = mongoose.connection;
 db.on("error", console.error.bind(console, "mongo connection error"));
